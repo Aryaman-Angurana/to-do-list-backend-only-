@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+    <form action="/users/<%= locals.username %>/add-content" method="post">
+        <label>
+            Item
+            <input type="text" name="item1" value="<%= locals.item1 %>">
+        </label>
+        <br>
+        <label>
+            Additional_info
+            <input type="text" name="add_inf" value="<%= locals.add_inf %>">
+        </label>
+        <br>
+        <button type="submit">Add Item</button>
+    </form>
+    <label><%= locals.errors %></label>
+    </center>
+</body>
+</html>

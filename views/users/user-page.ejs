@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/" method="get">
+        <button type="submit">Go To Home</button>
+    </form>
+    <form action="/users/<%= locals.username %>/add-content" method="get">
+        <button type="submit">+</button>
+    </form>
+    <div>
+        To-do tasks
+        <ul id="elements"></ul>
+    </div>
+    <script>
+        const _items = <%- JSON.stringify(items) %>;
+        const _additional_info = <%- JSON.stringify(additional_info) %>;
+        e = ""
+        for(let i = 0; i < _items.length; i++)
+        {
+            e += "<li>"
+            e += `<form action="/users/<%= locals.username %>/del-content/${i}" method="post"><button type="submit"><-</button>`
+            e += `${_items[i]}`
+            if (_additional_info[i] !== ""){
+                e += `<br> <label id="add_info">${_additional_info[i]}</label>`
+            }
+            e+= "</form></li>"
+        }
+        document.getElementById("elements").innerHTML = e;
+    </script>
+</body>
+</html>
